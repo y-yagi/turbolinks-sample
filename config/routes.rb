@@ -1,4 +1,5 @@
 TurbolinksSample::Application.routes.draw do
+  resources :comments
   get "redirect/index", as: 'redirect'
 
   get "campaign/campaign1", as: 'campaign1'

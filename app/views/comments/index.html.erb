@@ -1,0 +1,24 @@
+<div id="sidebar" data-turbolinks-permanent>
+  Sidebar, never changes after initial load.
+</div>
+
+<div id="flash" data-turbolinks-temporary>
+  You have <%= @comments.count %> comments.
+</div>
+
+<section id="comments">
+  <% @comments.each do |comment| %>
+    <article id="comments:<%= comment.id %>">
+      <p><%= comment.author %> : <%= comment.body %></p>
+    </article>
+  <% end %>
+</section>
+
+<br><br>
+<%= form_for(Comment.new, remote: true, authenticity_token: true, id: 'new_comment') do |form| %>
+  author: <%= form.text_field :author %>
+  <br>
+  body: <%= form.text_field :body %>
+  <br><br>
+  <%= form.submit %>
+<% end %>

@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to comments_url, change: 'comments'
+      redirect_to comments_url, change: ['comments', 'new_comment']
     else
       render :new, change: :new_comment
     end
